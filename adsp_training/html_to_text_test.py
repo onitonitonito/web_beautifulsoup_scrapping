@@ -1,3 +1,13 @@
+"""
+# html를 MD로 변환하는 LIB
+# import tomd
+# ---------
+# 간단한 HTML 에 대해서 Markdown 텍스트로 변환
+# 그런데, 복잡한 것은 에러 남.
+#
+\n\n\n"""
+print(__doc__)
+
 import os
 import sys
 import tomd as td
@@ -19,9 +29,6 @@ FILE_W_DIR = HOME_DIR + "\\_static\\" + FILE_NAME
 with open(FILE_W_DIR, 'r', encoding='utf-8') as f:
     html = f.read()
 
-
-# 간단한 HTML 에 대해서 Markdown 텍스트로 변환
-# 그런데, 복잡한 것은 에러 남.
 
 a = td.Tomd(html).markdown
 print(a)

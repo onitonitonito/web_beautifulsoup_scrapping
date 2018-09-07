@@ -4,9 +4,10 @@
     - URL doesn't contain ';'
     - URL always start with '/wiki/'
 """
+
+import re
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
-import re
 
 URL = 'https://en.wikipedia.org/wiki/Kevin_Bacon'
 

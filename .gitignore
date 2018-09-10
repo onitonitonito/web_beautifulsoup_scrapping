@@ -1,6 +1,7 @@
 # Temporary Files
 __pycache__/
 .ipynb_checkpoints
+*.csv
 
 
 # Temporary excel file

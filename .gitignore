@@ -6,3 +6,4 @@ __pycache__/
 
 # Temporary excel file
 *.xls
+*.xlsx

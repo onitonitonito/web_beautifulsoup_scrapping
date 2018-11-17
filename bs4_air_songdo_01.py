@@ -179,4 +179,4 @@ plt.show()
 
 
 # Data Frame 을 엑셀로 저장한다. (CSV화일)
-df.to_csv('air_incheon.csv', sep=',', encoding='utf-8')
+df.to_csv('./_static/air_incheon.csv', sep=',', encoding='utf-8')

@@ -1,10 +1,15 @@
 """
 # from : facebook/pythonkorea
 # https://www.facebook.com/groups/pythonkorea/permalink/1542991832450639/
-"""
-# python3 와 BeautifulSoup 그리고 selenium을 활용한 instagram crawling 프로그램을 개발중에 있습니다.
-# 많은분들의 도움을 받아, 현재 selenium을 사용하여 원격으로 로그인을 하여 원하는 해시태그를 검색하는 로직 까지는 개발이 완료되었습니다.
-# 하지만, 검색을 완료한 시점에서 해당 결과에 대해서 제가 원하는 정보들을 가져오고자 하는데 약간의 문제가 있는데.. 도움을 받을 수 있을까 하여 질문드립니다.
+# -----------------------------------------
+# python3 와 BeautifulSoup 그리고 selenium을 활용한 instagram crawling 프로그램을
+# 개발 중에 있습니다. 많은분들의 도움을 받아, 현재 selenium을 사용하여 원격으로
+# 로그인을 하여 원하는 해시태그를 검색하는 로직 까지는 개발이 완료되었습니다.
+# 하지만, 검색을 완료한 시점에서 해당 결과에 대해서 제가 원하는 정보들을 가져오고자
+# 하는데 약간의 문제가 있는데.. 도움을 받을 수 있을까 하여 질문드립니다.
+#
+#
+\n\n\n"""
 
 import time
 import requests
@@ -17,7 +22,7 @@ from selenium.webdriver.common.keys import Keys
 hashTag = input("#해시태그를 입력 하세요 : ")
 
 
-driver = webdriver.Chrome("C:\\Users\\{user_id}\\AppData\\Local\\ChromeDriver\\chromedriver.exe")
+driver = webdriver.Chrome("C:Users/{user_id}/AppData/Local/ChromeDriver/chromedriver.exe")
 driver.get("https://www.instagram.com/accounts/login/")
 
 element_id = driver.find_element_by_name("username")

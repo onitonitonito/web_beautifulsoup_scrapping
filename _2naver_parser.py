@@ -11,6 +11,7 @@ from bs4 import BeautifulSoup
 url = "http://www.naver.com/"
 html = req.urlopen(url).read()
 soup = BeautifulSoup(html, "html.parser")
+
 rank = soup.find("div")
 
 

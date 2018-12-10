@@ -4,7 +4,7 @@
 # ## 청라, 송도지역 미세먼지 측정값 스크래핑
 # > 1. 송도 = http://air.incheon.go.kr/airinch/real3.html?area_other_index=999992
 # > 1. 청라 = http://air.incheon.go.kr/airinch/real3.html?area_other_index=999991
-#
+# 
 # * Todo: 계측 센서 갯수가 다르므로 필터링 방식이 달라져야 한다
 # * 송도 = 6개 / 청라 = 4개
 
@@ -103,7 +103,7 @@ COLUMNS
 # In[7]:
 
 
-START = 8
+START = 8               
 REPEAT = 100
 
 AIR_DATA = []
@@ -117,7 +117,7 @@ for n in range(START, (6 * (REPEAT + 2)), 7):
     else:
         break
 
-AIR_DATA
+AIR_DATA 
 
 
 # In[8]:
@@ -149,7 +149,7 @@ df.head(n=10)
 # x축의 해상도를 설정한다 (시작, 끝, div_number)
 
 x_args = [0, 50, 50]
-# x = np.linspace(*x_args)
+# x = np.linspace(*x_args)    
 
 plt.hist(df.head(5))
 """ 그래프에 텍스트를 입히는 옵션 """
@@ -179,4 +179,5 @@ plt.show()
 
 
 # Data Frame 을 엑셀로 저장한다. (CSV화일)
-df.to_csv('./_static/air_incheon.csv', sep=',', encoding='utf-8')
+df.to_csv('air_incheon.csv', sep=',', encoding='utf-8')
+

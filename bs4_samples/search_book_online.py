@@ -27,6 +27,7 @@ def keyword_encode(s):
             encoded += str(code)
     return encoded
 
+
 def search(keyword):
     data = {
         'vPstrKeyWord': keyword_encode(keyword),
@@ -40,22 +41,46 @@ def search(keyword):
     res = requests.post(search_url, data=data)
     soup = BeautifulSoup(res.text, 'html.parser')
 
+    book_info_md = []
+
+    book_info_md.append('## BOOK SEARCH Info!')
+    book_info_md.append(f"- 교보문고 서적검색: keyword = **'{keyword}'**")
+
+
     for tag in soup.select('.title a'):
         detail_url = tag['href']
+
         if 'detailViewKor' in detail_url:
 
             detail_url = urljoin(search_url, detail_url)
             title = tag.select_one('strong').text.strip()
 
-            print(title)
-            print(detail_url)
+            # print(title)
+            # print(detail_url)
+            partial_bold_title = title.replace(keyword, f" **'{keyword}'** ")
+            book_info_md.append(f'1. [{partial_bold_title}]({detail_url})')
+
+    book_info_md.append('---\n<br><br>')
+    return book_info_md
+
 
 
 if __name__ == '__main__':
-    _encoded = keyword_encode('파이썬')
-    print(_encoded)                     # &#54028;&#51060;&#50028;
+    _search_key = '리액트'
+    _encoded = keyword_encode(_search_key)
+    print(f'{_search_key} = {_encoded}')   # &#54028;&#51060;&#50028;
+    print('\n\n\n')
 
-    # search('파이썬')
+
+    book_info_md = search(_search_key)
+
+    md_filename = './book_search_result.md'
+    book_info_md_str = "\n".join(book_info_md)
+
+    with open(md_filename, 'w', encoding='utf8') as f:
+        f.write(book_info_md_str)
+
+
 
     # TODO: 써치결과를 MD화일로 작성해서 WRITE 화일을 만듬
     # TODO: 상위 3페이지의 결과를 마크다운으로 만들어 WRITE 해줌

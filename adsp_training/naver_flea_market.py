@@ -16,6 +16,8 @@ driver = webdriver.PhantomJS(file_loc_win) # 윈도우
 url='http://v.media.daum.net/v/20170922175202762'
 driver.get(url)
 
+
+# ----- main / problematic part -----------
 curr_page = 1
 
 while curr_page < 6:
@@ -34,3 +36,9 @@ while curr_page < 6:
     curr_page = curr_page + 1
     page = driver.find_element_by_link_text(str(curr_page))
     page.click()
+
+
+
+"""
+에러 = main 이하
+"""

@@ -12,6 +12,7 @@ from selenium import webdriver
 
 
 url='http://v.media.daum.net/v/20170922175202762'
+
 file_loc_mac = '/usr/local/Cellar/phantomjs/2.1.1/bin/phantomjs'
 file_loc_win = 'C:/phantomjs-2.1.1-windows/bin/phantomjs.exe'
 

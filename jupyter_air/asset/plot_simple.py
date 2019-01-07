@@ -51,10 +51,6 @@ def plot_2charts(data_series, xlabel):
     plt.show()
 
 
-
-
-
-
 def plot_detail(pd_series,
                 color='blue', marker='^', linestyle='--',
                 xtick_interval=2,
@@ -68,22 +64,29 @@ def plot_detail(pd_series,
     https://matplotlib.org/api/_as_gen/matplotlib.pyplot.plot.html?highlight=plot%20color
     """
     this_func_name = sys._getframe().f_code.co_name
-    ytick_start = pd_series.min() - (pd_series.min() % ytick_interval)
-    ytick_end = pd_series.max() - (pd_series.max() % ytick_interval) + ytick_interval
+
+    ytick_start = pd_series.min()\
+        - (pd_series.min() % ytick_interval)\
+
+    ytick_end = pd_series.max()\
+        - (pd_series.max() % ytick_interval)\
+        + ytick_interval
 
     sorted_ytick_label = sorted([
-        *np.arange(ytick_start, ytick_end, ytick_interval).tolist(),
-        pd_series.min(),
-        pd_series.max(),
-        pd_series.mean(),
-        pd_series.median()])
+            *np.arange(ytick_start, ytick_end, ytick_interval).tolist(),
+            pd_series.min(),
+            pd_series.max(),
+            pd_series.mean(),
+            pd_series.median(),
+        ])
 
     plt.figure(figsize=(10, 4))
-
     plt.plot(pd_series, color=color, marker=marker, linestyle=linestyle)
+
+    plt.title(f'funcname={this_func_name} -- {pd_series.name}')
+
     plt.yticks(sorted_ytick_label, rotation=0)
     # plt.xticks(df.index, df.TIMES, rotation=90)
-    plt.title(f'funcname={this_func_name} -- {pd_series.name}')
     plt.legend()
     plt.grid()
     plt.show()
@@ -93,9 +96,9 @@ if __name__ == '__main__':
     from random import randint
 
     df_array = {
-        "A": [ randint(0,100) for i in range(50)],
-        "B": [ randint(0,100) for i in range(50)],
-        "C": [ randint(0,100) for i in range(50)],
+        "A": [randint(0, 100) for i in range(50)],
+        "B": [randint(0, 100) for i in range(50)],
+        "C": [randint(0, 100) for i in range(50)],
     }
 
     df1 = pd.DataFrame(df_array)
@@ -109,5 +112,3 @@ if __name__ == '__main__':
     # 4 foo 0   A
 
     plot_detail(df1.A)
-    plot_detail(df1.B)
-    plot_detail(df1.C)

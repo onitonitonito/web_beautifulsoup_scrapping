@@ -2,12 +2,14 @@
 # dir_work,
 # dir_data,
 # dir_data_collect,
+# dir_data_realtime,
 # dir_data_trash,
 # dir_img,
 # dir_img_heatmap,
 # dir_img_nulschool,
 # dir_img_plot_plot,
 # dir_img_plot_scatter,
+# dir_img_result,
 # dir_img_test,
 """
 print(__doc__)
@@ -21,6 +23,7 @@ dir_work = os.getcwd()
 # data 자동저장 폴더
 dir_data = os.path.join(dir_work, *['static', 'data',])
 dir_data_collect = os.path.join(dir_work, *['static', 'data', 'collect',])
+dir_data_realtime = os.path.join(dir_work, *['static', 'data', 'realtime',])
 dir_data_trash   = os.path.join(dir_work, *['static', 'data', 'trash',])
 
 
@@ -30,6 +33,7 @@ dir_img_heatmap = os.path.join(dir_work, *['static', 'img', 'heatmap',])
 dir_img_nulschool = os.path.join(dir_work, *['static', 'img', 'nulschool',])
 dir_img_plot_plot = os.path.join(dir_work, *['static', 'img', 'plot_plot',])
 dir_img_plot_scatter = os.path.join(dir_work, *['static', 'img', 'plot_scatter',])
+dir_img_result = os.path.join(dir_work, *['static', 'img', 'result',])
 dir_img_test = os.path.join(dir_work, *['static', 'img', 'test',])
 
 

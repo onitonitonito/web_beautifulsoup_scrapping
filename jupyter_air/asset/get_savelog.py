@@ -1,6 +1,6 @@
 """
 # get_savelog()
-#"""
+"""
 print(__doc__)
 # NOW_DATE
 # datetime.datetime.now() # ... datetime.datetime(2019, 1, 7, 18, 21, 13, 734730)

@@ -1,22 +1,55 @@
-""" Keyword search in Donga-Ilbo :: Couldn't find : parser libraryError lxml
-  (1) Can't performed with CMD - lxml parser libraryError, DLL errors.. etc.
-  (2) Only run with Anaconda env = Ipython, Jupyter, Spyder etc..
 """
+# Keyword search in Donga-Ilbo :: Couldn't find : parser libraryError lxml
+# --- (1) Can't performed with CMD - lxml parser libraryError, DLL errors etc.
+# --- (2) Only run with Anaconda env = Ipython, Jupyter, Spyder etc..
+#
+#
+# http://news.donga.com/search
+# ?p=
+# &query=
+# &check_news=1
+# &more=1
+# &sorting=3
+# &search_date=1
+# &v1=
+# &v2=
+# &range=3'
+"""
+print(__doc__)
+
+# import lxml # can't find a tree builder : lxml. Install parser?
+# from lxml import etree    # ImportError: DLL load failed:
+
 
 import os
 import sys
-
-# import lxml               # can't find a tree builder : lxml. Install parser?
-# from lxml import etree    # ImportError: DLL load failed:
 
 import urllib.request
 
 from bs4 import BeautifulSoup
 from urllib import parse
 
+# 현재 화일이 있는 working dir.
+work_dir = os.getcwd()
+
+# C:\...web_beautifulsoup_scrapping\static\result\
+dir_static_result = os.path.join(work_dir, *['static', 'result', '',])
+
+# print(dir_static_result); quit()
+
+
 TARGET_URL_BEFORE_PAGE_NUM = "http://news.donga.com/search?p="
 TARGET_URL_BEFORE_KEWORD = '&query='
 TARGET_URL_REST = '&check_news=1&more=1&sorting=3&search_date=1&v1=&v2=&range=3'
+
+
+KEY_WORD = '사드'
+PAGE_NUM = 2
+OUT_F_NAME = '_1_thadd_article.pdb'
+
+DESTIN_DIR = os.path.join(
+    os.path.dirname(os.path.dirname(__file__)),
+    'static', '_temp', '')
 
 
 def get_link_from_news_title(page_num, URL, output_file):
@@ -42,14 +75,6 @@ def get_text(URL, output_file):
     for item in content_of_article:
         string_item = str(item.find_all(text=True))
         output_file.write(string_item)
-
-
-KEY_WORD = '사드'
-PAGE_NUM = 2
-OUT_F_NAME = '_1_thadd_article.pdb'
-DESTIN_DIR = os.path.join(
-    os.path.dirname(os.path.dirname(__file__)),
-    '_static', '_temp', '')
 
 
 def main(argv):
@@ -80,4 +105,5 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    main(sys.argv)
+    # main(sys.argv)
+    pass

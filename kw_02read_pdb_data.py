@@ -1,9 +1,18 @@
+"""
+#
+#
+#
+"""
+print(__doc__)
+
+
 import os
 
 F_NAME = '_1_thadd_article.pdb'
+
 DESTIN_DIR = os.path.join(
     os.path.dirname(os.path.dirname(__file__)),
-    '_static', '_temp', '')
+    'static', '_temp', '')
 
 f = open(DESTIN_DIR + F_NAME, 'r', encoding='UTF-8')
 a = f.read()        # 'str'

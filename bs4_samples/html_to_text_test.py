@@ -12,6 +12,7 @@ import os
 import sys
 import tomd as td
 import html2text as ht
+
 from pprint import pprint
 
 
@@ -24,7 +25,7 @@ sys.path.append(HOME_DIR)
 # FILE_NAME = "01_fruit.html" # N.G
 FILE_NAME = "html_to_text_sample.html"    # O.K
 
-FILE_W_DIR = HOME_DIR + "\\_static\\" + FILE_NAME
+FILE_W_DIR = HOME_DIR + "\\static\\" + FILE_NAME
 
 with open(FILE_W_DIR, 'r', encoding='utf-8') as f:
     html = f.read()

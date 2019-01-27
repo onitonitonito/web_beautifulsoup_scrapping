@@ -1,16 +1,17 @@
 """
 # 교보문고 검색결과를 크롤링으로 보여 줌 -- by Ask Company
 # 써치 키워드의 인코딩을 다소 어렵게 함 ... keyword_encode()
-#
-# https://gist.github.com/allieus/2a083babf5a24bc10e7f5c9877473af5?fbclid=IwAR19rnMgVLeMi1-wp28hSMye685vRoSzcQMhp_qjX3WregAzQDmzZsqrj_U
-#
+# ----------------------
+# https://gist.github.com/allieus/2a083babf5a24bc10e7f5c9877473af5?fbclid=
+# IwAR19rnMgVLeMi1-wp28hSMye685vRoSzcQMhp_qjX3WregAzQDmzZsqrj_U
 #
 #\n\n\n"""
 print(__doc__)
 
 import requests
 from bs4 import BeautifulSoup
-from urllib.parse import quote, urljoin
+from urllib.parse import quote
+from urllib.parse import urljoin
 
 
 def keyword_encode(s):
@@ -87,7 +88,6 @@ if __name__ == '__main__':
 
 
 """ Keyword = '파이썬'
-
 Do it! 점프 투 파이썬
 http://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=9788997390915&orderClick=LAG&Kc=
 

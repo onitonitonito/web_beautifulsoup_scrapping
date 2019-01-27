@@ -12,7 +12,7 @@ def simple_text_scraping():
     TEXT = DATA.decode('UTF-8')
     print('\n(1) DATA = ', DATA)      # byte type 'str'
     print('\n(2) TEXT = ', TEXT)      # decoded 'str' with 'CODEC=UTF-8'
-# simple_text_scraping()
+
 
 """ -------- LESSON.01 -- Naver finance USD to KRW
 """
@@ -55,4 +55,9 @@ def get_USD2KRW_in_naver():
         time.sleep(10)
         # os.system('cls')
 
-get_USD2KRW_in_naver()
+
+
+if __name__ == '__main__':
+    # get_USD2KRW_in_naver()
+    simple_text_scraping()
+    pass

@@ -15,7 +15,7 @@
 # &v2=
 # &range=3'
 """
-print(__doc__)
+# print(__doc__)
 
 # import lxml # can't find a tree builder : lxml. Install parser?
 # from lxml import etree    # ImportError: DLL load failed:
@@ -47,9 +47,31 @@ KEY_WORD = '사드'
 PAGE_NUM = 2
 OUT_F_NAME = '_1_thadd_article.pdb'
 
+url = 'http://news.donga.com/search'
+param_dict = {
+    'p' : '',
+    'query' : KEY_WORD,
+    'check_news' : '1',
+    'more' : '1',
+    'sorting' : '3',
+    'search_date' : '1',
+    'v1' : '',
+    'v2' : '',
+    'range' : '3',
+}
+
+url_all = url + '?' + parse.urlencode(param_dict)
+
+
+
+
+
+
 DESTIN_DIR = os.path.join(
-    os.path.dirname(os.path.dirname(__file__)),
-    'static', '_temp', '')
+    os.path.dirname(__file__),
+    *['static', '_temp', ''],)
+
+# print(DESTIN_DIR); quit()
 
 
 def get_link_from_news_title(page_num, URL, output_file):
@@ -105,5 +127,5 @@ def main(argv):
 
 
 if __name__ == '__main__':
-    # main(sys.argv)
+    main(sys.argv)
     pass

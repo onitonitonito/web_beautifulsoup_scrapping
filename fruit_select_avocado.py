@@ -8,7 +8,7 @@ import os
 from bs4 import BeautifulSoup
 
 FILE_NAME = '01_fruit.html'
-DESTIN_DIR = os.path.join(os.path.dirname(__file__),'sample_html', FILE_NAME)
+DESTIN_DIR = os.path.join(os.path.dirname(__file__),'static','sample_html', FILE_NAME)
 print(DESTIN_DIR)
 
 f = open(DESTIN_DIR, encoding='UTF-8')

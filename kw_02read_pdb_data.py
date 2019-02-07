@@ -9,10 +9,15 @@ print(__doc__)
 import os
 
 F_NAME = '_1_thadd_article.pdb'
-
+dir_work = os.path.dirname(__file__)
 DESTIN_DIR = os.path.join(
-    os.path.dirname(os.path.dirname(__file__)),
-    'static', '_temp', '')
+    dir_work,
+    *['static', '_temp', ''],)
+
+# print(DESTIN_DIR)
+# quit()
+
+
 
 f = open(DESTIN_DIR + F_NAME, 'r', encoding='UTF-8')
 a = f.read()        # 'str'

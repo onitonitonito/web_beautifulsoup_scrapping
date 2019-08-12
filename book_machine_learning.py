@@ -58,6 +58,6 @@ def get_USD2KRW_in_naver():
 
 
 if __name__ == '__main__':
-    # get_USD2KRW_in_naver()
     simple_text_scraping()
+    get_USD2KRW_in_naver()
     pass

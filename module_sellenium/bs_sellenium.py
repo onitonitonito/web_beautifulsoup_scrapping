@@ -21,8 +21,11 @@ from selenium.webdriver.common.keys import Keys
 
 hashTag = input("#해시태그를 입력 하세요 : ")
 
+where_chrome_is = "C:Users/{user_id}/AppData/Local/ChromeDriver/chromedriver.exe"
+driver = webdriver.Chrome(where_chrome_is)
 
-driver = webdriver.Chrome("C:Users/{user_id}/AppData/Local/ChromeDriver/chromedriver.exe")
+# path was already set
+driver = webdriver.Chrome()
 driver.get("https://www.instagram.com/accounts/login/")
 
 element_id = driver.find_element_by_name("username")

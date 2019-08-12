@@ -20,6 +20,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
+#
 browser = webdriver.Chrome()
 
 
@@ -35,14 +36,14 @@ passwordElem.send_keys('test12345')
 
 # passwordElem.submit()
 
-# body = browser.find_element_by_tag_name("body")
-# body.send_keys(Keys.CONTROL + 't')
-# time.sleep(3)
+body = browser.find_element_by_tag_name("body")
+body.send_keys(Keys.CONTROL + 't')
+time.sleep(3)
 
 
 
-# browser.get('https://todoist.com/Users/showLogin')
-browser.execute_script("window.open('https://todoist.com/Users/showLogin','_blank');")
+browser.get('https://todoist.com/Users/showLogin')
+# browser.execute_script("window.open('https://todoist.com/Users/showLogin','_blank');")
 
 emailElem = browser.find_element_by_id('email')
 emailElem.send_keys('test123@gmail.com')

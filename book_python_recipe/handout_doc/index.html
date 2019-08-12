@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Handout</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="highlight.css">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<script src="marked.js"></script>
+<script src="script.js"></script>
+<script src="highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<article><div class="markdown">### ��ũ�ٿ��� ���� ��, Python ��ũ��Ʈ�� HTML ������ �ڵ��ƿ� �������� ��ȯ�� �ִ�
+# ��Ű���� �Ұ��� �帳�ϴ�.
+# https://github.com/danijar/handout
+#
+#</div>
+<pre><code class="python">print(__doc__)
+
+import handout
+import matplotlib.pyplot as plt
+import numpy as np
+
+# DESTIN_DIR = './handout_doc/'     # Root Sub_folder
+DESTIN_DIR = 'handout_doc'          # Sub_folder</code></pre>
+<div class="markdown"> Start your handout with an output directory </div>
+<pre><code class="python"># doc = handout.Handout('/tmp/handout')
+doc = handout.Handout(DESTIN_DIR)</code></pre>
+<div class="markdown"> Print text and Variables. </div>
+<pre><code class="python">for index in range(3):
+    doc.add_text(f'Interation ... {index}')
+
+doc.show()</code></pre>
+<pre class="message">Interation ... 0
+</pre>
+<pre class="message">Interation ... 1
+</pre>
+<pre class="message">Interation ... 2
+</pre>
+<div class="markdown"> Insert matplotlib figure </div>
+<pre><code class="python">fig, ax = plt.subplots(1,1, figsize=(4,3))
+fig.tight_layout()
+doc.add_figure(fig)
+
+doc.show()</code></pre>
+<img src="figure-0.png" /></article>
+</body>
+</html>

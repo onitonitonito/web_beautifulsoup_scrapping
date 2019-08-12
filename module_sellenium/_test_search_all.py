@@ -11,34 +11,35 @@ print(__doc__)
 import time
 from selenium import webdriver
 
-URL_KEYS = {
+url_keys = {
         'naver' : ('http://search.naver.com', 'query'),
         'google' : ('http://www.google.com', 'q'),
         'daum' : ('http://www.daum.net', 'q'),
     }
 
-# FIND_WORD = "ChromeDriver"
-# URL=URL_KEYS['naver'][0]
-# KEY=URL_KEYS['naver'][1]
-
-DRIVER = webdriver.Chrome()
+# find_word = "ChromeDriver"
+# URL=url_keys['naver'][0]
+# KEY=url_keys['naver'][1]
 
 
-def search_word(url_name, word):
-    _url = URL_KEYS[url_name][0]
-    _key = URL_KEYS[url_name][1]
-    _find_word = word
+def search_word(url_keys, site_name, find_word):
+    _url = url_keys[site_name][0]
+    _key = url_keys[site_name][1]
 
-    # DRIVER = webdriver.Chrome()
-    DRIVER.get(_url)
+    browser = webdriver.Chrome()
+    browser.get(_url)
 
-    search_box = DRIVER.find_element_by_name(_key)
-    search_box.send_keys(_find_word)
+    # script = f"window.open('{_url}','_blank');"
+    # browser.execute_script(script)
+
+    search_box = browser.find_element_by_name(_key)
+    search_box.send_keys(find_word)
+    # time.sleep(1)
+
     search_box.submit()
+    # time.sleep(3)
 
 
-search_word('naver', '크롬드라이브')
-search_word('google', '크롬드라이브')
-search_word('daum', '크롬드라이브')
-
-# time.sleep(5)
+search_word(url_keys, 'naver', '크롬드라이브')
+search_word(url_keys, 'google', '크롬드라이브')
+search_word(url_keys, 'daum', '크롬드라이브')

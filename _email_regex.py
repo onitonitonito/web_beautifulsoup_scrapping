@@ -31,7 +31,7 @@ def fin_email_list():
     return match
 
 
-def resule_copy(match):
+def result_copy(match):
     if len(match) > 0:
         pyperclip.copy('\n'.join(match))
         print('클립보드에 복사 되었습니다.')
@@ -41,7 +41,7 @@ def resule_copy(match):
 
 def main():
     match = fin_email_list()
-    resule_copy(match)
+    result_copy(match)
 
 
 if __name__ == '__main__':

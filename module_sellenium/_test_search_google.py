@@ -6,11 +6,11 @@
 # 구글의 키워드 검색은 쿼리(q=)명령어 다음 파라메터로 실행
 # 네이버는, &query=... / 구글, 다음은, &q=...
 #
+"""
 # Optional argument, if not specified, will search path.
 # driver = webdriver.Chrome('/Anaconda3/chromedriver')
 # Registered already in sys.path '/Anaconda3/chromedriver'
 # ChromeDriver Ver 2.43
-"""
 
 import os
 import sys

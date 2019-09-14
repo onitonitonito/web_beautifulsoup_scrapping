@@ -4,7 +4,7 @@
 # 최초의 창은 브라우저실행 = browser.get(goto_url)
 # 추가 창은 스크립트 실행 = browser.execute_script(script_strings)
 #
-\n\n"""
+"""
 # browser.get("https://www.naver.com")
 # goto_dict = {
 # 'naver_sports': 'https://sports.news.naver.com/index.nhn',
@@ -26,6 +26,10 @@ code_finances = {
     '마크로젠': '038290',
     '대원미디어': '048910',
     '내츄럴엔도텍': '168330',
+    '휴메딕스': '200670',
+    '포스코케미칼': '003670',
+    '삼성전자': '005930',
+    '안랩': '053800',
 }
 
 code_names = list(code_finances.keys())

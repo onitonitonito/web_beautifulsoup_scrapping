@@ -1,0 +1,142 @@
+{
+  "언주역 인근 호텔": [
+    {
+      "address": "서울특별시 강남구 논현동 봉은사로 155",
+      "homepage": "hotelcappuccino.co.kr",
+      "hotel": "호텔 카푸치노",
+      "info": "4.1 (474) ₩90,765,4성급 호텔,무료 Wi-Fi 조식 포함,광고 Hotels.com 제공 추천 상품",
+      "phone": "02-2038-9500"
+    },
+    {
+      "address": "서울특별시 강남구 논현동 봉은사로 223",
+      "homepage": "gladlive-hotels.com",
+      "hotel": "글래드 라이브 강남",
+      "info": "4.0 (516) ₩122,508,4성급 호텔,무료 Wi-Fi,광고 Hotels.com 제공 추천 상품",
+      "phone": "02-6177-5000"
+    },
+    {
+      "address": "서울특별시 강남구 논현1동 봉은사로 143",
+      "homepage": "gangnamfamilyhotel.com",
+      "hotel": "강남패밀리호텔",
+      "info": "4.1 (280) ₩66,732,3성급 호텔,무료 Wi-Fi",
+      "phone": "02-6474-1515"
+    },
+    {
+      "address": "서울특별시 강남구 역삼1동 봉은사로 164",
+      "homepage": "california-hotel.co.kr",
+      "hotel": "캘리포니아호텔",
+      "info": "3.5 (77) ₩68,000,3성급 호텔,무료 Wi-Fi",
+      "phone": "02-553-4100"
+    },
+    {
+      "address": "서울특별시 강남구 논현동 봉은사로 155",
+      "homepage": "hotelcappuccino.co.kr",
+      "hotel": "호텔 카푸치노",
+      "info": "4.1 (474) ₩90,765,4성급 호텔,무료 Wi-Fi 조식 포함",
+      "phone": "02-2038-9500"
+    },
+    {
+      "address": "서울특별시 강남구 논현동 봉은사로 223",
+      "homepage": "gladlive-hotels.com",
+      "hotel": "글래드 라이브 강남",
+      "info": "4.0 (516) ₩122,508,4성급 호텔,무료 Wi-Fi",
+      "phone": "02-6177-5000"
+    },
+    {
+      "address": "서울특별시 강남구 논현1동 봉은사로 139",
+      "homepage": "bestwesterngangnam.com",
+      "hotel": "베스트웨스턴프리미어강남호텔",
+      "info": "4.0 (450) ₩108,905,3성급 호텔,무료 Wi-Fi",
+      "phone": "02-6474-2000"
+    },
+    {
+      "address": "서울특별시 강남구 역삼1동 봉은사로 150",
+      "homepage": "samjunghotel.co.kr",
+      "hotel": "삼정 호텔",
+      "info": "3.8 (514) ₩105,882,4성급 호텔,무료 Wi-Fi",
+      "phone": "02-557-1221"
+    },
+    {
+      "address": "서울특별시 강남구 역삼동 606",
+      "hotel": "볼 호텔 강남",
+      "info": "4.0 (20),3성급 호텔",
+      "phone": "02-561-2211"
+    },
+    {
+      "address": "서울특별시 Kangnam-gu, Gangnam, 역삼동 606-18",
+      "hotel": "Human Touchville Yeoksam Residence",
+      "info": "4.0 (1),호텔"
+    }
+  ],
+  "인천 송도 호텔": [
+    {
+      "address": "10-2 연수구 인천광역시 KR",
+      "homepage": "skyparkincheonsongdo.com",
+      "hotel": "호텔스카이파크인천송도",
+      "info": "4.0 (185) ₩89,152,4성급 호텔,무료 Wi-Fi, 광고 Agoda 제공 추천 상품",
+      "phone": "032-717-0700"
+    },
+    {
+      "address": "인천광역시 연수구 옥련동 552-5",
+      "homepage": "hotelamare.kr",
+      "hotel": "아마레",
+      "info": "4.3 (37) ₩59,964,3성급 호텔,무료 Wi-Fi,광고 Hotels.com 제공 추천 상품",
+      "phone": "032-813-2222"
+    },
+    {
+      "address": "인천광역시 연수구 송도1동 153 Convensia-road",
+      "homepage": "marriott.com",
+      "hotel": "쉐라톤 그랜드 인천",
+      "info": "4.3 (1,473) ₩205,700,5성급 호텔,식당, 바, 스 파가 있는 고급 호텔,무료 Wi-Fi",
+      "phone": "032-835-1000"
+    },
+    {
+      "address": "인천광역시 연수구 송도동 테크노파크 로 151",
+      "homepage": "orakaihotels.com",
+      "hotel": "오라카이 송도파크호텔",
+      "info": "4.0 (1,177) ₩123,628,4성급 호텔,도시 및 바다 전망을 갖춘 고급 호텔,무료 Wi-Fi",
+      "phone": "032-210-7000"
+    },
+    {
+      "address": "인천광역시 송도1동 10-2 연수구 인천광역시 KR",
+      "homepage": "skyparkincheonsongdo.com",
+      "hotel": "호텔스카이파크인천송도",
+      "info": "4.0 (185) ₩89,152,4성급 호텔,무료 Wi-Fi",
+      "phone": "032-717-0700"
+    },
+    {
+      "address": "인천광역시 연수구 송도2동 테크노파크로 193",
+      "homepage": "centralparkhotel.co.kr",
+      "hotel": "센트럴파크 호텔",
+      "info": "4.0 (1,195) ₩98,288,5성급 호텔,무료 Wi-Fi",
+      "phone": "032-310-5000"
+    },
+    {
+      "address": "KR, 165 컨벤시아대로 송도1동 연수구 인천광역시",
+      "homepage": "oakwoodpremier.co.kr",
+      "hotel": "Oakwood Premier Incheon",
+      "info": "4.5 (1,222) ₩172,774,4성급 호텔,무료 Wi-Fi",
+      "phone": "032-726-2000"
+    },
+    {
+      "address": "200 Technopark Ro, 송도2동 Yeonsu-gu, Incheon",
+      "homepage": "accorhotels.com",
+      "hotel": "경원재 앰배서더 인천",
+      "info": "4.4 (339) ₩250,798,5성급 호텔,무료 Wi-Fi",
+      "phone": "032-729-1101"
+    },
+    {
+      "address": "인천광역시 연수구 동춘동 능허대로267번길 29",
+      "homepage": "wyndhamhotels.com",
+      "hotel": "라마다송도호텔",
+      "info": "3.3 (1,054) ₩52,216,₩64,900,4성급 호텔,무료 Wi-Fi,파격 할인가 20% 저렴",
+      "phone": "032-832-2000"
+    },
+    {
+      "address": "인천광역시 연수구 송도동 아트센터대로 107 커낼워크D3",
+      "hotel": "The november lounge",
+      "info": "4.0 (110) ₩106,469,라운지,무료 Wi-Fi",
+      "phone": "032-833-1984"
+    }
+  ]
+}

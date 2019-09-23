@@ -15,40 +15,29 @@
 print(__doc__)
 
 import time
+
 from selenium import webdriver
+from assets.config_stocks import *
 
 
-site_finances = 'https://finance.naver.com/item/main.nhn?code='
 
-code_finances = {
-    '제닉': '123330',
-    '아모레G': '002790',
-    '마크로젠': '038290',
-    '대원미디어': '048910',
-    '내츄럴엔도텍': '168330',
-    '휴메딕스': '200670',
-    '포스코케미칼': '003670',
-    '삼성전자': '005930',
-    '안랩': '053800',
-}
-
-code_names = list(code_finances.keys())
+code_names = list(code_stock.keys())
 
 
-def get_finance_site(site_finances, code_finances, code_name):
-    mixed_string = site_finances + code_finances[code_name]
+def get_finance_site(site_finances, code_stock, code_name):
+    mixed_string = site_finances + code_stock[code_name]
     return mixed_string
 
 
-def get_finance_script(site_finances, code_finances, code_name):
-    mixed_string = f"window.open('{site_finances + code_finances[code_name]}','_blank');"
+def get_finance_script(site_finances, code_stock, code_name):
+    mixed_string = f"window.open('{site_finances + code_stock[code_name]}','_blank');"
     return mixed_string
 
 
 def call_windows_by_code(code_names):
     for code_name in code_names:
         browser.execute_script(
-            get_finance_script(site_finances, code_finances, code_name)
+            get_finance_script(site_finances, code_stock, code_name)
         )
         time.sleep(0.01)
 
@@ -58,7 +47,7 @@ browser = webdriver.Chrome()
 
 # overwrite on the same browser
 # pop the 1st page and add others on different windows
-browser.get(get_finance_site(site_finances, code_finances, code_names[0]))
+browser.get(get_finance_site(site_finances, code_stock, code_names[0]))
 
 # pops from seconds to the end
 call_windows_by_code(code_names[1:])

@@ -1,7 +1,7 @@
 """
 # config_stocks.py - variables
-# apply: multi_pop_tabs / stock_weekly_chart.ipynb
 """
+# apply: multi_pop_tabs / stock_weekly_chart.ipynb
 print(__doc__)
 
 # for selenium chromedriver

@@ -32,8 +32,8 @@ from urllib import parse
 # 현재 화일이 있는 working dir.
 work_dir = os.getcwd()
 
-# C:\...web_beautifulsoup_scrapping\static\result\
-dir_static_result = os.path.join(work_dir, *['static', 'result', '',])
+# C:\...web_beautifulsoup_scrapping\_statics\result\
+dir_static_result = os.path.join(work_dir, *['_statics', 'result', '',])
 
 # print(dir_static_result); quit()
 
@@ -69,7 +69,7 @@ url_all = url + '?' + parse.urlencode(param_dict)
 
 DESTIN_DIR = os.path.join(
     os.path.dirname(__file__),
-    *['static', '_temp', ''],)
+    *['_statics', '_temp', ''],)
 
 # print(DESTIN_DIR); quit()
 

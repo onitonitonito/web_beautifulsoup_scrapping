@@ -29,7 +29,7 @@ while dir_works[-1] != root_name:
 
 ROOT = "\\".join(dir_works)
 
-dir_static_result = os.path.join(ROOT, *['static', 'result',])
+dir_static_result = os.path.join(ROOT, *['_statics', 'result',])
 
 
 url = 'http://news.donga.com/search'

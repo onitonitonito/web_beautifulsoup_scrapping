@@ -33,9 +33,9 @@ def arrange_list(list):
 
 def get_soup_selections(url_target, class_filtered):
     """ using BS4 + requests, get filtered soup selections object """
-    response = requests.get(url_target)
-    soup = BeautifulSoup(response.text, "html.parser")
-    return soup.select(class_filtered)
+    html = requests.get(url_target)
+    response = BeautifulSoup(html.text, "html.parser")
+    return response.select(class_filtered)
 
 
 def get_scrapped_array(url_target, class_filtered):
@@ -74,22 +74,22 @@ def show_comparison_rank(dict_key1, dict_key2):
     (name01, rank01) = get_name_array(*scrap_dict[dict_key1])
     (name02, rank02) = get_name_array(*scrap_dict[dict_key2])
 
-    print(f"  {name01:25} {name02}")
+    print(f"  {name01:30} {name02}")
     print("-" * 40)
     for i in range(10):
         same01 = "*" if rank01[i] in rank02 else " "
         same02 = "*" if rank02[i] in rank01 else " "
-        print(f'{i+1:2}. {same01} {rank01[i]:10} {rank02[i]} {same02}')
+        print(f'{i+1:2}. {same01} {rank01[i]:15} {rank02[i]} {same02}')
     print("\n")
 
 
 def main():
-    # Example.01 - 싱글리스트 보기
-    show_rank_echo("daum")
-    show_rank_echo("naver")
-
-    # Example.02 - 비교리스트 보기
+    # Example.01 - 비교리스트 보기
     show_comparison_rank("daum", "naver")
+
+    # Example.02 - 싱글리스트 보기
+    show_rank_echo("naver")
+    show_rank_echo("daum")
 
 
 

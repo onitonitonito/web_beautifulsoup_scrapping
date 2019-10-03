@@ -12,7 +12,7 @@ F_NAME = '_1_thadd_article.pdb'
 dir_work = os.path.dirname(__file__)
 DESTIN_DIR = os.path.join(
     dir_work,
-    *['static', '_temp', ''],)
+    *['_statics', '_temp', ''],)
 
 # print(DESTIN_DIR)
 # quit()

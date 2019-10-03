@@ -1,11 +1,10 @@
 """
 # C. 네이버 웹툰 제목 가져오기
 # http://bit.ly/2YK0r49
+"""
 # --------
 # https://comic.naver.com/webtoon/weekday.nhn
 # 먼저 월요일 웹툰의 제목만 추출을 해봅시다.
-#
-\n\n"""
 print(__doc__)
 
 import requests

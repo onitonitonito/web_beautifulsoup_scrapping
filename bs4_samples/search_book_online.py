@@ -5,7 +5,7 @@
 # https://gist.github.com/allieus/2a083babf5a24bc10e7f5c9877473af5?fbclid=
 # IwAR19rnMgVLeMi1-wp28hSMye685vRoSzcQMhp_qjX3WregAzQDmzZsqrj_U
 #
-#\n\n\n"""
+"""
 print(__doc__)
 
 import requests

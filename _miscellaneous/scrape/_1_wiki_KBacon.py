@@ -1,3 +1,9 @@
+"""
+# general scrapping test
+#
+"""
+# print(__doc__)
+
 import re
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
@@ -24,7 +30,7 @@ def test1_show_whole_bytes(target_url):
     # SHOW DATA Decoded
     _text = byte_data.decode('UTF-8')
     print('\n(2) TEXT = ', _text)  # decoded 'str' with 'CODEC=UTF-8'
-# test1_show_whole_bytes(URL1)
+    pass
 
 
 def show_URL1_wiki_kevin_bacon(target_url):
@@ -41,19 +47,25 @@ def show_URL1_wiki_kevin_bacon(target_url):
             print(link.attrs['href'])
 
 
-show_URL1_wiki_kevin_bacon(URL1)
-
-
 def for_URL2_namu_dirty_bomb(target_url):
     html = urlopen(target_url)
     bs_obj = BeautifulSoup(html, 'html.parser')
 
     print(type(bs_obj))
 
-    # _f1, _f2 = ('div', {'id':'card recent-card'})
-    # _findAll_args = ("a", re.compile('^(/w/)((?!:).)*$')) # href=re.compile..
+    _f1, _f2 = ('div', {'id':'card recent-card'})
+    _findAll_args = ("a", re.compile('^(/w/)((?!:).)*$')) # href=re.compile..
 
-    # for link in bs_obj.find('div', {'id':'recentChangeTable'}).findAll('a', href=re.compile('^(/w/)((?!:).)*$')):
-    #     if 'href' in link.attrs:
-    #         print(link.attrs['href'])
-# for_URL2_namu_dirty_bomb(URL1)
+    for link in bs_obj.find('div', {'id':'recentChangeTable'}).findAll('a', href=re.compile('^(/w/)((?!:).)*$')):
+        if 'href' in link.attrs:
+            print(link.attrs['href'])
+    pass
+
+
+if __name__ == '__main__':
+    # test1_show_whole_bytes(URL1)
+    show_URL1_wiki_kevin_bacon(URL1)
+    # for_URL2_namu_dirty_bomb(URL1)
+    # for_URL2_namu_dirty_bomb(URL2)
+
+    pass

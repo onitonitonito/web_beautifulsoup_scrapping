@@ -1,7 +1,7 @@
 """
 # 동아일보 키워드 뉴스서치 크로울링
 # 결과정리 = 마크다운 목차(1폐이지만)
-# 정리위치 = ./static/result/
+# 정리위치 = ./_statics/result/
 #
 """
 # print(__doc__)
@@ -29,8 +29,8 @@ KEY_WORD = '미세먼지&중국'
 #
 # ROOT = "\\".join(dir_works)
 
-# dir_static_result = os.path.join(ROOT, *['static', 'result',])
-dir_static_result = os.path.join(*['static', 'result',])
+# dir_static_result = os.path.join(ROOT, *['_statics', 'result',])
+dir_static_result = os.path.join(*['_statics', 'result',])
 
 
 url = 'http://news.donga.com/search'

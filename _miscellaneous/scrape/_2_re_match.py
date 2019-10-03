@@ -2,7 +2,8 @@ import re
 import os
 from bs4 import BeautifulSoup
 
-DESTIN_DIR = os.path.join(os.path.dirname(__file__),'')
+DESTIN_DIR = os.path.join(os.path.dirname(__file__), '')
+
 # FNAME = '_reg_ex_drill.html'
 FNAME = 'kevin_scrap.html'
 

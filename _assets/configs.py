@@ -1,47 +1,43 @@
 """
-# _assets/configs.py - 각종변수 및 Path를 지정
+# configs.py - root_name 기준, 기본폴더 시스템을 dict_dirs 로 등록.
 """
 print(__doc__)
+
 import os
 import sys
+from os.path import join
+
+root_name="web_beautifulsoup_scrapping"
+
+def get_dict_dirs(root_name):
+    """ roor_name 폴더를 기준으로 현재 프로젝트 폴더의 주요정보를 받는다. """
+    dict_dirs = {}
+
+    dirs_temp = os.getcwd().partition(root_name)
+    dict_dirs['root_name'] = root_name
+    dict_dirs['dir_root'] = "".join(dirs_temp[:2])
+
+    dict_dirs['dir_assets'] = join(dict_dirs['dir_root'], "_assets", "")
+    dict_dirs['dir_statics'] = join(dict_dirs['dir_root'], "_statics", "")
+    dict_dirs['dir_results'] = join(dict_dirs['dir_root'], "_results", "")
+    return dict_dirs
 
 
-name_top = "web_beautifulsoup_scrapping"
+def show_dict_dirs(root_name):
+    """get_dict_dir 의 내용을 보여주고 / dict_dirs 를 반환한다"""
+    dict_dirs = get_dict_dirs(root_name)
 
-dir_dict = {
-    '_assets' : ['_assets',],
-    '_misc' : ['_miscellaneous',],
-    '_statics' : ['_statics',],
-}
-
-def get_dir_by_name(name_top):
-    """
-    top level name을 기준으로 dir을 반환한다.
-    사용환경에 따라, 실행기준이 달라지기 때문에
-    탑레벨을 시스템 path 에 추가한다.
-    """
-    dir_array = os.getcwd().partition(name_top)
-    dir_by_name = "".join(dir_array[:2])
-    return dir_by_name
-
-def join_dir(*dirs_array):
-    return os.path.join(*dirs_array)
-
-def get_dir(dir_top, dir_dict, key_name):
-    return os.path.join(dir_top, *dir_dict[key_name])
-
-
-
-
-
-def main():
-    dir_top = get_dir_by_name(name_top)
-    print("top :", dir_top)
-
+    for i, (item_key, item_value) in enumerate(dict_dirs.items(), 1):
+        print(f"{i:2}. {item_key:10} : {item_value}")
     print()
-    print("_assets :", get_dir(dir_top, dir_dict, "_assets"))
-    print("_misc :", get_dir(dir_top, dir_dict, "_misc"))
-    print("_statics :", get_dir(dir_top, dir_dict, "_statics"))
+    return dict_dirs
+
+
+
+dict_dirs = show_dict_dirs(root_name)
+
+
+
 
 if __name__ == '__main__':
-    main()
+    print(dict_dirs)

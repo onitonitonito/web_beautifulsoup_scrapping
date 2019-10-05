@@ -2,9 +2,11 @@
 # self generated result, log
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-trash/
-html/
 test/
+html/
+trash/
+_results/*.json
+_results/*.xls
 
 *.log
 

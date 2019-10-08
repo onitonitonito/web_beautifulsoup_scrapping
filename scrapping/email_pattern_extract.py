@@ -12,13 +12,15 @@ import os, sys                                          # 1
 root_name = "web_beautifulsoup_scrapping"               # 2
 root = "".join(os.getcwd().partition(root_name)[:2])    # 3
 sys.path.insert(0, root)                                # 4
+import _assets.script_run
+print(__doc__)
+
 
 import re
 import pyperclip
 
-import _assets.script_run
 from _assets.configs import *
-print(__doc__)
+from _assets.class_functions import *
 
 json_file_with_dir = join(dict_dirs['dir_results'], 'email_extracts.json')
 excel_file_with_dir = join(dict_dirs['dir_results'], 'email_extracts.xls')
@@ -46,7 +48,7 @@ def main():
         print('\n이메일 주소(regex_pattern)결과가 클립보드에 복사 되었습니다.')
 
         data_string =  str(result_dict)
-        save_json(data_string, json_file_with_dir)
+        save_str_file(data_string, json_file_with_dir)
 
         rows_2d_array = [value for key, value in result_dict.items()]
         save_excel(rows_2d_array, excel_file_with_dir)
@@ -104,35 +106,6 @@ def get_result_dict(matches):
                                     ]
         index_dict += 1
     return result_dict
-
-
-def save_json(json_type_data_string, filename_with_dir):
-    """ json_type_data_string(result_dict)를 json 화일로 저장한다."""
-    filename = filename_with_dir.split("\\")[-1]
-    print(f"'json_type_data_string'가 json화일({filename})로 생성 되었습니다..")
-
-    with open(file=filename_with_dir, mode='w', encoding='utf8') as f:
-        f.write(json_type_data_string)
-
-
-def save_excel(rows_2d_array, filename_with_dir):
-    """
-    # openpyxl을 이용하여 excel 화일로 저장한다 / import openpyxl 필요
-    # rows_2d_array 를 입력받아 row(1d)로 한줄씩 쪼개서 WS.append(row)한다.
-    # 최종적으로 WB.save(file_dir) / WB.close() 한다
-    """
-    import openpyxl as opx
-    filename = filename_with_dir.split("\\")[-1]
-
-    WB = opx.Workbook()
-    WS = WB.active
-
-    for row in rows_2d_array:
-        WS.append(row)
-
-    WB.save(excel_file_with_dir)
-    WB.close()
-    print(f"'rows_2d_array'가 excel화일({filename})로 생성 되었습니다..")
 
 
 

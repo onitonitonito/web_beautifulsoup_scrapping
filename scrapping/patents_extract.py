@@ -21,7 +21,7 @@ regex_pattern = '제10-\d\d\d\d\d\d\d호'
 
 
 def main():
-    response = get_response(url_target, getter=1)
+    response = get_html_soup(url_target, getter=1)
     finders = get_finders(tags, response)
 
     result_dict = {}

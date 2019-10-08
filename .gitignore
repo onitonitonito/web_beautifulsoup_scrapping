@@ -1,14 +1,15 @@
 #____________________________________
 # self generated result, log
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*.log
 
 test/
 html/
 trash/
-_results/*.json
-_results/*.xls
 
-*.log
+_results/*.md
+_results/*.xls
+_results/*.json
 
 
 #____________________________________

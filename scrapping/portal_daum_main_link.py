@@ -16,14 +16,14 @@ tags = ["a", { 'class' : 'link_txt'}]       # 주요기사
 tags = ["a", { 'class' : 'link_favorsch'}]  # 인기 검색어
 
 def main():
-    response = get_response(url_target, getter=2)
+    response = get_html_soup(url_target, getter=2)
     finders = get_finders(tags, response)
 
     show_results_listed(finders, tags, detailed=0)
     show_results_listed(finders, tags, detailed=1)
 
 
-def get_response(url_target, getter=1):
+def get_html_soup(url_target, getter=1):
     """
     # get beautifulsoup response, using selecting 1 out of 2 ways
     #   * getter=1 ... requests.get(url_target)

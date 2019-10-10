@@ -1,15 +1,22 @@
 """
-# C. 네이버 웹툰 제목 가져오기
-# http://bit.ly/2YK0r49
+# crawl_webtoon_title_naver.py - 네이버 웹툰 제목 가져오기
+# - http://bit.ly/2YK0r49
 """
-# --------
 # https://comic.naver.com/webtoon/weekday.nhn
 # 먼저 월요일 웹툰의 제목만 추출을 해봅시다.
-print(__doc__)
+
+# root path 를 sys.path.insert 시키기 위한 코드 ... 최소 4줄 필요------------
+import os, sys                                                          # 1
+root_name = "web_beautifulsoup_scrapping"                               # 2
+root = "".join(os.getcwd().partition(root_name)[:2])                    # 3
+sys.path.insert(0, root)                                                # 4
+# -------------------------------------------------------------------------
 
 import requests
+import _assets.script_run
 from bs4 import BeautifulSoup
-from pprint import pprint
+
+print(__doc__)
 
 # 웹 페이지를 열고 소스코드를 읽어오는 작업
 url_target = "http://comic.naver.com/webtoon/weekday.nhn"
@@ -36,14 +43,12 @@ def basic_crawl():
         week_title_list.extend(title_list)  # 단순하게 값을 추가해 1차원으로 만들려면 extend
         # week_title_list.append(title_list) #요일별로 나눠 2차원 리스트를 만들려면 append
 
-    pprint(week_title_list)
-
 
 def main():
     # 모든 웹툰 제목 영역 추출
     data = soup.findAll('a', {'class': 'title'})
-    week_title_list = [dat.text for dat in data]
-    pprint(week_title_list)
+    [print(f"{i+1:02}. {item.text}") for i, item in enumerate(data)]
+
 
 
 if __name__ == '__main__':

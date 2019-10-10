@@ -2,8 +2,6 @@
 # 마크다운이 포함 된, Python 스크립트를 HTML 형태의 핸드아웃 페이지로 변환해 주는
 # 패키지를 소개해 드립니다.
 # https://github.com/danijar/handout
-#
-#
 """
 print(__doc__)
 

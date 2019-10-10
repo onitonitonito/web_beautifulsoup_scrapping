@@ -8,7 +8,6 @@ html/
 trash/
 
 _results/*.md
-_results/*.xls
 _results/*.json
 
 

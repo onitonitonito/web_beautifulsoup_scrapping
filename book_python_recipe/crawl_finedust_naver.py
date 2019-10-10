@@ -5,11 +5,20 @@
 # ----
 # 간단한 웹크롤링 따라하기
 \n\n"""
-print(__doc__)
+
+# root path 를 sys.path.insert 시키기 위한 코드 ... 최소 4줄 필요------------
+import os, sys                                                          # 1
+root_name = "web_beautifulsoup_scrapping"                               # 2
+root = "".join(os.getcwd().partition(root_name)[:2])                    # 3
+sys.path.insert(0, root)                                                # 4
+# -------------------------------------------------------------------------
 
 import requests
+import _assets.script_run
 from bs4 import BeautifulSoup as bs
 from pprint import pprint
+
+print(__doc__)
 
 url_target = 'https://search.naver.com/search.naver?query=날씨'
 

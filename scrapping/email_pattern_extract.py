@@ -8,22 +8,24 @@
 #     1. 클립보드에서 텍스트를 가져온다.
 #     2. 텍스트에서 이메일 주소를 가져온다.
 #     3. 클립보드에 다시 복사한다.
-import os, sys                                          # 1
-root_name = "web_beautifulsoup_scrapping"               # 2
-root = "".join(os.getcwd().partition(root_name)[:2])    # 3
-sys.path.insert(0, root)                                # 4
-import _assets.script_run
-print(__doc__)
 
+# root path 를 sys.path.insert 시키기 위한 코드 ... 최소 4줄 필요------------
+import os, sys                                                          # 1
+root_name = "web_beautifulsoup_scrapping"                               # 2
+root = "".join(os.getcwd().partition(root_name)[:2])                    # 3
+sys.path.insert(0, root)                                                # 4
+# -------------------------------------------------------------------------
 
 import re
 import pyperclip
 
+import _assets.script_run
 from _assets.configs import *
 from _assets.class_functions import *
+print(__doc__)
 
-json_file_with_dir = join(dict_dirs['dir_results'], 'email_extracts.json')
-excel_file_with_dir = join(dict_dirs['dir_results'], 'email_extracts.xls')
+json_file_with_dir = join(dirs_dict['dir_results'], 'email_extracts.json')
+excel_file_with_dir = join(dirs_dict['dir_results'], 'email_extracts.xls')
 regex_pattern = r'''(
         [ㄱ-힣]+[ㄱ-힣][ ]{0,2}[ㄱ-힣]+  # name consits with Korean
         [ ]{0,3}<                       # white space before bracket-open

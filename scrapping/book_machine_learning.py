@@ -2,30 +2,37 @@
 # book_macnine_learning.py - simple scrapping examples
 # - from M/L book by Kujira.
 """
-import os, sys                                          # 1
-root_name = "web_beautifulsoup_scrapping"               # 2
-root = "".join(os.getcwd().partition(root_name)[:2])    # 3
-sys.path.insert(0, root)                                # 4
-import _assets.script_run
-print(__doc__)
-
+# root path 를 sys.path.insert 시키기 위한 코드 ... 최소 4줄 필요------------
+import os, sys                                                          # 1
+root_name = "web_beautifulsoup_scrapping"                               # 2
+root = "".join(os.getcwd().partition(root_name)[:2])                    # 3
+sys.path.insert(0, root)                                                # 4
+# -------------------------------------------------------------------------
 
 import re
+import _assets.script_run
 from _assets.class_functions import (get_html_soup,
                                     get_finders,
                                     get_regex_extracts)
+
+print(__doc__)
 
 def main():
     keyword = "샤오미+체지방"
     price_cut_range = (10_000, 100_000)
     show_shopping_naver(keyword, *price_cut_range)
 
-    # show_api_response_scrapping()
-    # show_usd2krw_naver_finance()
+    show_api_response_scrapping()
+    show_usd2krw_naver_finance()
     pass
 
 
 def show_shopping_naver(keyword, low_cut, high_cut):
+    """
+    # made this for practice, quit not that effective
+    # price range's limited by low~high cut value.
+    """
+    # TODO: this can be solved with query option
 
     # tags = ['div', {'class': 'co_relation_srh'}]    # 연관검색어
     tags = ['div', {'class': 'info'}]                 # 상품정보
@@ -37,8 +44,8 @@ def show_shopping_naver(keyword, low_cut, high_cut):
     url_target = "https://search.shopping.naver.com/search/all.nhn?query="
     url_combined = url_target + keyword
 
-    response = get_html_soup(url_combined, getter=1)
-    finders = get_finders(tags, response)
+    html_soup = get_html_soup(url_combined, getter=1)
+    finders = get_finders(tags, html_soup)
 
     index_find = 0
 
@@ -85,8 +92,8 @@ def show_api_response_scrapping():
     """
     # READOUT DATA
     url_target = 'http://api.aoikujira.com/ip/ini'
-    response = get_html_soup(url_target, getter=2)
-    rows = response.text.split("\n")
+    html_soup = get_html_soup(url_target, getter=2)
+    rows = html_soup.text.split("\n")
 
     [print(row) for row in rows]          # for test!
 
@@ -98,12 +105,12 @@ def show_api_response_scrapping():
             result_dict[title] = info
 
 
-    # show data decoded by 'utf8' ... response = <class 'bs4.BeautifulSoup'>
-    # response_str = str(object=response) # the same
-    response_str = response.decode('UTF-8')
+    # show data decoded by 'utf8' ... html_soup = <class 'bs4.BeautifulSoup'>
+    # html_soup_str = str(object=html_soup) # the same
+    html_soup_str = html_soup.decode('UTF-8')
 
-    print('(1) DATA = ', response)      # byte type 'str'
-    print('(2) TEXT = ', response_str)  # decoded 'str' with 'CODEC=UTF-8'
+    print('(1) DATA = ', html_soup)      # byte type 'str'
+    print('(2) TEXT = ', html_soup_str)  # decoded 'str' with 'CODEC=UTF-8'
 
     print("---- dictionary ----")
     [print(f"{title:20} : {info}") for (title, info) in result_dict.items()]
@@ -121,17 +128,17 @@ def show_usd2krw_naver_finance():
     url_target = "http://finance.naver.com/marketindex/"
 
     # RES = req.urlopen(URL)
-    response = get_html_soup(url_target, getter=1)
+    html_soup = get_html_soup(url_target, getter=1)
 
     while True:
         # div class='head_info' 안에서 span class='value'
-        krw = response.select_one('div.head_info > span.value').string    # 1,133.80
+        krw = html_soup.select_one('div.head_info > span.value').string    # 1,133.80
 
         # div class='head_info' 안에서 span class='change'
-        differ = response.select_one('div.head_info > span.change').string  # 1.20
+        differ = html_soup.select_one('div.head_info > span.change').string  # 1.20
 
         # div class='head_info' 안에서 span class='blind' = 상승/하강(한글)
-        change = response.select_one('div.head_info > span.blind').string   # down
+        change = html_soup.select_one('div.head_info > span.blind').string   # down
 
         flt_krw = float(krw.replace(',',''))
         flt_differ = float(differ)

@@ -2,18 +2,21 @@
 # due to the differences results on Terminal & script_run
 # for inserting root_dir, need 4 lines minimum
 """
-import os, sys                                          # 1
-root_name = "web_beautifulsoup_scrapping"               # 2
-root = "".join(os.getcwd().partition(root_name)[:2])    # 3
-sys.path.insert(0, root)                                # 4
+# root path 를 sys.path.insert 시키기 위한 코드 ... 최소 4줄 필요------------
+import os, sys                                                          # 1
+root_name = "web_beautifulsoup_scrapping"                               # 2
+root = "".join(os.getcwd().partition(root_name)[:2])                    # 3
+sys.path.insert(0, root)                                                # 4
+# -------------------------------------------------------------------------
+
 import _assets.script_run
+import _assets.configs as conf
+
 print(__doc__)
 
 
-import _assets.configs as conf
-
 # [print(func) for func in sd.__dir__() if not func.startswith("_")]
-print(conf.dict_dirs.keys())
+print(conf.dirs_dict.keys())
 
 print()
 [print(dir) for dir in sys.path]

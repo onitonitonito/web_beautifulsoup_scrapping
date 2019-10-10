@@ -23,7 +23,7 @@ from urllib.parse import urljoin
 from _assets.configs import *
 from _assets.class_functions import *
 
-filename_with_dir = join(dict_dirs['dir_results'],
+filename_with_dir = join(dirs_dict['dir_results'],
                         'book_search_result.md',
                         )
 

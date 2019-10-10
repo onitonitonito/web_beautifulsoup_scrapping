@@ -2,54 +2,37 @@
 #
 #
 """
-# print(__doc__)
+# root path 를 sys.path.insert 시키기 위한 코드 ... 최소 4줄 필요------------
+import os, sys                                                          # 1
+root_name = "web_beautifulsoup_scrapping"                               # 2
+root = "".join(os.getcwd().partition(root_name)[:2])                    # 3
+sys.path.insert(0, root)                                                # 4
+# -------------------------------------------------------------------------
+
 import re
 import requests
-import script_run
+import _assets.script_run
 
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+from _assets.class_functions import (
+                                    get_html_soup,
+                                    get_finders,
+                                    get_regex_extracts
+                                    )
 
 url_target = "http://www.daum.net"
+regex_pattern = '(?<=href=").*?(?=")'
 
-tags = ["a", { 'class' : 'link_txt'}]       # 주요기사
 tags = ["a", { 'class' : 'link_favorsch'}]  # 인기 검색어
+tags = ["a", { 'class' : 'link_txt'}]       # 주요기사
 
 def main():
-    response = get_html_soup(url_target, getter=2)
-    finders = get_finders(tags, response)
+    html_soup = get_html_soup(url_target, getter=2)
+    finders = get_finders(tags, html_soup)
 
     show_results_listed(finders, tags, detailed=0)
     show_results_listed(finders, tags, detailed=1)
-
-
-def get_html_soup(url_target, getter=1):
-    """
-    # get beautifulsoup response, using selecting 1 out of 2 ways
-    #   * getter=1 ... requests.get(url_target)
-    #   * getter=2 ... urlopen(url_target)
-    """
-    html = requests.get(url_target).text   # getter == 1
-    if getter == 2:
-        html = urlopen(url_target)
-    return BeautifulSoup(markup=html, features='html.parser')
-
-
-def get_finders(tags, response):
-    """ response에서 Tags기준에 부합하는 결과array(finders)추출반환"""
-    return response.find_all(*tags)
-
-
-def get_hyper_ref_url(string):
-    """스트링에서 href 부분을 regex패턴으로 찾아서 추출 반환한다"""
-    pattern = re.compile('(?<=href=").*?(?=")')
-
-    try:
-        hrefs = pattern.findall(string)  # finder array
-    except:
-        hrefs = ["N/A",]
-
-    return hrefs[0]
 
 
 def show_results_listed(finders, tags, detailed=False):
@@ -57,7 +40,7 @@ def show_results_listed(finders, tags, detailed=False):
     print('-----------------'*4)
     for i, find in enumerate(finders, 1):
         text_string = find.text.replace('\n', '')
-        href_string = get_hyper_ref_url(str(find))
+        href_string = get_regex_extracts(regex_pattern, str(find))
 
         if detailed:
             print(f"{i:>02}. {text_string}")
@@ -70,5 +53,9 @@ def show_results_listed(finders, tags, detailed=False):
 
 
 
+
 if __name__ == '__main__':
     main()
+
+# TODO: 각 분야별 주요뉴스 page 1/8 을 각각 불러서 저장하는 기능추가!
+#       현재는 제일 첫번째 (default) 를 가져오는 것 만..

@@ -16,16 +16,14 @@ def get_html_soup(url_target, getter=1):
     #   * getter=1 ... requests.get(url_target)
     #   * getter=2 ... urlopen(url_target)
     """
-
     if getter == 1:
         response = requests.get(url_target)   # getter == 1
-        markup = response.text
         status_code = response.status_code
+        markup = response.text
     else:
         response = urlopen(url_target)
         status_code = response.getcode()
         markup = response
-
     print(f"status_code = [{status_code}] \n")
     return BeautifulSoup(markup=markup, features='html.parser')
 

@@ -16,11 +16,12 @@ _results/*.json
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 __pycache__/
 .ipynb_checkpoints
+*.xls
+*.xlsx
 
 
 
 #____________________________________
-# Temporary excel file
+# should be hidden
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-*.xls
-*.xlsx
+_config_security.py

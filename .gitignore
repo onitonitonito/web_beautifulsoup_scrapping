@@ -25,3 +25,5 @@ __pycache__/
 # should be hidden
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 _config_security.py
+
+module_sellenium/statics/*.png

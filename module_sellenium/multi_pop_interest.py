@@ -13,7 +13,6 @@ from assets.functions_class import get_pop_script
 browser = webdriver.Chrome()
 
 
-
 def main():
     # 첫번째 장 오픈
     browser.get(tags[0])

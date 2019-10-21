@@ -38,21 +38,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-"""
-# multi pop-up windows = browser.get() + call_windows_by_code()
-
-# this is not functional
-time.sleep(1)
-browser.execute_script("window.close();")
-
-# this works properly
-time.sleep(5)
-browser.quit()
-"""

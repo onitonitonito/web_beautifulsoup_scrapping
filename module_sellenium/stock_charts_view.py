@@ -8,6 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 import assets.script_run
+from assets.config_stocks import site_finances
 from assets.config_stocks import code_stock, URL, sidecode
 from assets.functions_class import set_font_hanguel_graph
 
@@ -19,7 +20,7 @@ set_font_hanguel_graph()
 # 글로벌 변수 = names, codes 정의.
 (names, codes) = list(code_stock.keys()), list(code_stock.values())
 targets = ['day','week','month3','year','year3','year5','year10']
-start, end = (0, 6)
+start, end = (0, 4)
 
 def main():
     """ 6개 ~ 최대12개 챠트만 나열해서 봅니다. 그게 제일, 보기 적당해"""
@@ -41,7 +42,8 @@ def show_names_codes(start, end):
     print(f"\nTargets = {targets}", flush=True)
     print("========"*5, flush=True)
     for i, name in enumerate(names_partial):
-        print(f" {i+1:02}. {name} ({codes_partial[i]})", flush=True)
+        url_target = site_finances + codes_partial[i]
+        print(f" {i+1:02}. {name} ({codes_partial[i]}) ... {url_target}", flush=True)
     print("========"*5, flush=True)
     print("* 변경:'config_stocks.py' 의 변수를 수정.\n\n", flush=True)
 

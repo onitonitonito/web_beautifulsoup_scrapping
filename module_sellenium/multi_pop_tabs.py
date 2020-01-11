@@ -7,52 +7,34 @@
 import time
 from selenium import webdriver
 
-from assets.config_stocks import code_stock
+from assets.config_stocks import code_stock, show_dict
+from assets.config_stocks import names, codes
 from assets.config_stocks import site_finances
+from assets.config_stocks import pop_top_windown, pop_script_window
 
 print(__doc__)
-
-names = [name for name in code_stock.keys()]
-codes = [code for code in code_stock.values()]
 
 
 def main():
     global browser
 
+    show_dict()
     charts_total, charts_number_str = get_charts_quantity()
-    charts_number = get_charts_selected(charts_total, charts_number_str)
-    print(f"*** Show you {charts_number} chats! ***")
+    end_number = get_charts_selected(charts_total, charts_number_str)
+    print(f"*** Show you {end_number} chats! ***")
 
     browser = webdriver.Chrome()
 
-    pop_top_windown()
-    pop_script_window(charts_number)
+    pop_top_windown(browser, 1)
+    pop_script_window(browser, end_number, end_by=True)
 
-def pop_top_windown():
-    """첫번째 탭 : browser.get() """
-    # top page = browser.get()
-    url_top = site_finances + codes[0]
-    browser.get(url_top)
+    # TODO: get_charts_quantity ... has to be modified - [when getting array]
 
-    print()
-    print(f" 01.{names[0]}({codes[0]})")
-
-def pop_script_window(charts_number):
-    """추가되는 탭 : javascript - window.open"""
-    # otehr tabs = browser.excute_script(javascript)
-    for i, code in enumerate(codes[1:charts_number], 1):
-        url_target = site_finances + code
-        browser.execute_script(f"window.open('{url_target}', '_blank');")
-        print(f" {i:02}.{names[i]}({code})")
 
 def get_charts_quantity():
     """ """
-    print("------"*5)
-    for i, code in enumerate(codes):
-        url_target = site_finances + code
-        print(f" {i+1:02}.{names[i]:14} {url_target}")
-    print("------"*5, "\n")
-    charts_total = len(names)
+    global codes
+    charts_total = len(codes)
     charts_number_str = input(f"How many charts(2~max.{charts_total})? [Ent]=All : ")
     return charts_total, charts_number_str
 

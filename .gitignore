@@ -26,4 +26,4 @@ __pycache__/
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 _config_security.py
 
-module_sellenium/statics/*.png
+module_sellenium/works/*.png

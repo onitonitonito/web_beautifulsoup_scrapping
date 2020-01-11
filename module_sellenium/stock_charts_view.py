@@ -2,15 +2,13 @@
 # stock_charts_view /pstaticNet - jupyter notebook conversion
 # config_stocks.py 에서 변수를 가져옴 (종목명/코드)
 """
-
+import random
 import skimage
-import numpy as np
 import matplotlib.pyplot as plt
 
 import assets.script_run
-from assets.config_stocks import site_finances
-from assets.config_stocks import code_stock, URL, sidecode
-from assets.functions_class import set_font_hanguel_graph
+from assets.config_stocks import *
+from assets.functions_class import set_font_hanguel_graph, get_today_header
 
 print(__doc__)
 
@@ -18,87 +16,103 @@ print(__doc__)
 set_font_hanguel_graph()
 
 # 글로벌 변수 = names, codes 정의.
-(names, codes) = list(code_stock.keys()), list(code_stock.values())
-targets = ['day','week','month3','year','year3','year5','year10']
-start, end = (0, 4)
+header = get_today_header()             # 05Dec(Thu)AM0803_2017
 
 def main():
     """ 6개 ~ 최대12개 챠트만 나열해서 봅니다. 그게 제일, 보기 적당해"""
-    global start, end
-    save_chart_only = False
-
+    global index_partial
     # 확인할 종목명, 코드를 보여준다.
-    show_names_codes(start, end)
-
+    show_dict()
     # only save all = True / just watch = Flase
+    save_chart_only = is_save_only()
+
+    # show_names_codes(index_partial)
+    index_partial = get_index_partial()
+
     save_or_show(save_chart_only)
 
-def show_names_codes(start, end):
-    """ HELPER() for main() : 관심종목명(코드)를 보여줌 """
-    global names, codes
-    names_partial = names[start:end]
-    codes_partial = codes[start:end]
 
-    print(f"\nTargets = {targets}", flush=True)
-    print("========"*5, flush=True)
-    for i, name in enumerate(names_partial):
-        url_target = site_finances + codes_partial[i]
-        print(f" {i+1:02}. {name} ({codes_partial[i]}) ... {url_target}", flush=True)
-    print("========"*5, flush=True)
-    print("* 변경:'config_stocks.py' 의 변수를 수정.\n\n", flush=True)
+def get_index_partial():
+    """ index_partial 을 input 입력 받는다. """
+    print()
+    answer = input(
+                "idx_array를 ','구분 4개 이상 입력 짝수로 입력 (예) 4,3,1,2\n" +
+                "or [ENTER]=기본 처음 4개 출력 [1,2,3,4]와 동일\n :    "
+                ).strip()
+    if answer[0:1].isnumeric():
+        print([int(idx)-1 for idx in answer.split(",")])
+        return [int(idx)-1 for idx in answer.split(",")]
+    else:
+        print([idx for idx in range(4)])
+        return [idx for idx in range(4)]
 
-def save_or_show(save_chart_only):
-    """ HELPER() for main() : 저장만 하든지, 보기만 하든지 """
-    global targets, start, end
+def is_save_only():
+    question = "\n*** ONLY Save all the targeted charts? [Yes=1 / No=Enter]"
+    answer = True if input(question).startswith('1') else False
+    print(f"(Save all the charts? = '{answer}')")
+    return answer
 
-    for i, target in enumerate(targets):
-        proceed = f"{i+1}/{len(targets)}"  # 진행정도
-        question = f"\n\nDraw '{target}'graph({proceed})? ... [OK=Ent./NO=1]"
-
-        if save_chart_only:
-            show_charts_axes(target, start, end)
-            plt.savefig(fname=f"./statics/{i:02}_{target}.png")
-        else:
-            if not input(question).startswith("1"):
-                show_charts_axes(target, start, end)
-                plt.show()
-            else:
-                print(f" ***** '{target}' charts are skipped! *****")
-
-def get_images_nparray(target, start, end):
+def get_images_nparray(target, index_partial):
     """
-    HELPER() for show_charts_axes() :목적챠트(target)에 대해 start~end 범위
-    skimage obj. array 반납
+    # HELPER() for show_charts_axes() :목적챠트(target)에 대해
+    # index_partial 범위 skimage obj. array 반납
     """
-    global names, codes
+    _, codes_partial = get_names_codes_partial(index_partial)
+
     images_nparray = []
-    for i, name in enumerate(names[start:end]):
-        img_url = f"{URL}/{target}/{codes[i]}.png?sidcode={sidecode}"
+    for code in codes_partial:
+        img_url = f"{URL}/{target}/{code}.png?sidcode={get_sidecode(13)}"
         im_array = skimage.io.imread(img_url)
         images_nparray.append(im_array)
     return images_nparray
 
-def show_charts_axes(target, start, end):
-    """ 헬퍼함수를 사용해서 targer 과 start_end를 받아서 챠트를 출력한다. """
-    global names, codes
-    images = get_images_nparray(target, start, end)
-    names = names[start:end]
-    codes = codes[start:end]
+def show_charts_axes(target, index_partial):
+    """ 헬퍼함수를 사용해서 target 과 index_partial 받아서 챠트 출력. """
+    images_nparray = get_images_nparray(target, index_partial)
+    (names_partial, codes_partial) = get_names_codes_partial(index_partial)
 
-    (cols, rows) = (2, int(len(names)/2))     # (2 , 6)
-    fig, ax = plt.subplots(ncols=cols, nrows=rows, figsize=(18,rows*6))
+    (cols, rows) = (2, int(len(names_partial)/2))     # (2 , 6)
+    fig, ax = plt.subplots(ncols=cols, nrows=rows, figsize=(18, rows*6))
 
-    count = 0
+    i = 0
     for row in range(rows):
         for col in range(cols):
-            # print(row,col)   # ... for test
-            ax[row,col].imshow(images[count])
-            ax[row,col].set_title(f"{names[count]} ({codes[count]}) by {target}")
-            count += 1
+            # TODO: Something might wrong! within 2~3, or odd number!
+            try:
+                # print(row,col)   # ... for test
+                ax[row,col].imshow(images_nparray[i])
+                ax[row,col].set_title(
+                    f"{names_partial[i]} ({codes_partial[i]}) by {target}"
+                    )
+            except:
+                print("*** TODO: Error! HOTFIX! ***")
+                pass
+            i += 1
     plt.tight_layout(pad=0.1)
 
-# TODO 1: names and charts are not matched -- should be corrected!
-# TODO 2: refactor variables, more effective
+def save_or_show(save_chart_only=False):
+    """ HELPER() for main() : 저장만 하든지, 보기만 하든지 """
+    global targets, header
 
+    for i, target in enumerate(targets):
+        proceed = f"{i+1}/{len(targets)}"  # 진행정도 표시
+        question = f"\n\nDraw '{target}'graph({proceed})? ... [OK=Ent./NO=1]"
+
+        if save_chart_only:
+            # save all charts designated, properly 4 charts
+            print(f"\n... '{i:02}.{target}' chart is saved", flush=True)
+            show_charts_axes(target, index_partial)
+            plt.savefig(fname=home_works + f"{header}_{i:02}_{target}.png")
+        else:
+            if not input(question).startswith("1"):
+                show_charts_axes(target, index_partial)
+                plt.show()
+            else:
+                print(f" ***** '{target}' charts are skipped! *****")
+
+
+
+
+# TODO 1: refactor variables, more effective
 if __name__ == '__main__':
     main()

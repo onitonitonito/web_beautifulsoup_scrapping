@@ -3,7 +3,6 @@
 # driver = webdriver.Chrome('/Anaconda3/chromedriver')
 # Registered already in sys.path '/Anaconda3/chromedriver'
 # ChromeDriver Ver 2.43
-#
 """
 print(__doc__)
 

@@ -8,7 +8,6 @@ print(__doc__)
 from selenium import webdriver
 
 from assets.config_daum import tags
-from assets.functions_class import get_pop_script
 
 browser = webdriver.Chrome()
 
@@ -22,6 +21,9 @@ def main():
     browser.execute_script(get_pop_script(tags[2]))
     browser.execute_script(get_pop_script(tags[3]))
 
+
+def get_pop_script(url_target):
+    return f"window.open('{url_target}', '_blank');"
 
 
 

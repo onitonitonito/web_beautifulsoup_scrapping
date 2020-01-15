@@ -27,3 +27,4 @@ __pycache__/
 _config_security.py
 
 module_sellenium/works/*.png
+module_sellenium/works/interests/*.png

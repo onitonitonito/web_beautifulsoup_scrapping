@@ -1,15 +1,15 @@
 #____________________________________
 # self generated result, log
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+*.ini
 *.log
-
-test/
-html/
-trash/
 
 _results/*.md
 _results/*.json
 
+test/
+html/
+trash/
 
 #____________________________________
 # Temporary Files
@@ -19,12 +19,10 @@ __pycache__/
 *.xls
 *.xlsx
 
-
-
 #____________________________________
 # should be hidden
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 _config_security.py
 
 module_sellenium/works/*.png
-module_sellenium/works/interests/*.png
+module_sellenium/works/interests_7_8_18_17_9_11/*.png

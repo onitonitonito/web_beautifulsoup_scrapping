@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 
 import assets.script_run
 from assets.config_stocks import *
-from assets.functions_class import set_font_hanguel_graph, get_today_header
+from assets.functions_class import get_today_header
+from assets.functions_class import set_font_hanguel_graph
 
 print(__doc__)
 
@@ -26,7 +27,7 @@ def main():
     # only save all = True / just watch = Flase
     save_chart_only = is_save_only()
 
-    # show_names_codes(index_partial)
+    # show_names_codes(index_partial) --> global
     index_partial = get_index_partial()
 
     save_or_show(save_chart_only)

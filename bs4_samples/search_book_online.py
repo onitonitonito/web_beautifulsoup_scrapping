@@ -7,10 +7,8 @@
 # ----------------------
 # TODO: 써치결과를 MD화일로 작성해서 WRITE 화일을 만듬
 # TODO: 상위 3페이지의 결과를 마크다운으로 만들어 WRITE 해줌
-import os, sys                                          # 1
-root_name = "web_beautifulsoup_scrapping"               # 2
-root = "".join(os.getcwd().partition(root_name)[:2])    # 3
-sys.path.insert(0, root)                                # 4
+
+import _add_sysroot_path
 import _assets.script_run
 
 print(__doc__)
@@ -40,8 +38,8 @@ def main():
 
     save_str_file(book_info_md_str, filename_with_dir)
 
-    # with open(md_filename, 'w', encoding='utf8') as f:
-    #     f.write(book_info_md_str)
+    with open(filename_with_dir, 'w', encoding='utf8') as f:
+        f.write(book_info_md_str)
 
 
 def keyword_encode(s):

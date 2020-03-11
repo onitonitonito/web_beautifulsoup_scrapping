@@ -14,29 +14,67 @@ sys.path.insert(0, root)                                                # 4
 # -------------------------------------------------------------------------
 
 import requests
+from bs4 import BeautifulSoup
+from urllib.parse import (
+                    urlparse,
+                    urlunparse,
+                    urlsplit,
+                    urlunsplit,
+                    urlencode,
+                )
+
 import _assets.script_run
-from bs4 import BeautifulSoup as bs
-from pprint import pprint
 
 print(__doc__)
 
 url_target = 'https://search.naver.com/search.naver?query=날씨'
+"""
+# SplitResult( 5-tuples
+#         scheme='https',
+#         netloc='search.naver.com',
+#         path='/search.naver',
+#         query='query=날씨',
+#         fragment='',
+#     )
+# ParseResult( 6-tuples ... add 'params'
+#         scheme='https',
+#         netloc='search.naver.com',
+#         path='/search.naver',
+#         params='',
+#         query='query=날씨',
+#         fragment='',
+#     )
+"""
+param_dict = {
+        'scheme'    : 'https',
+        'netloc'    : 'search.naver.com',
+        'path'      : '/search.naver',
+        'params'    : '',
+        'query'     : 'query=날씨',
+        'fragment'  : '',
+    }
+
+# _ = urlsplit(url=url_target)
+# print(_); quit()
+
+url_base = "https://www.daum.net/q"
+url = url_base + "?" + urlencode(query=param_dict)
 
 html = requests.get(url_target)
 html.close()
-# pprint(html.text)
+# print(html.text)
 
-soup = bs(html.text, 'html.parser')
+soup = BeautifulSoup(html.text, 'html.parser')
 
 # location = str(locations[0])[4:-5]
 locations = soup.find('span', {'class': 'btn_select'}).findAll('em')
 location = locations[0].text
 
 data1 = soup.find('div', {'class': 'detail_box'})
-# pprint(data1)
+# print(data1)
 
 data2 = data1.findAll('dd')
-# pprint(data2)
+# print(data2)
 
 
 chemicals = [dat.find('span', {'class': 'num'}).text for dat in data2]

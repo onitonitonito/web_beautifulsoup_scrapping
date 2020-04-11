@@ -4,10 +4,12 @@
 # https://gosmcom.tistory.com/104
 
 import time
-import skimage
+import skimage.io
 import numpy as np
 import matplotlib.pyplot as plt
 import pyautogui as pag
+
+from PIL import Image, ImageOps
 from config_autogui import *
 
 def run01():
@@ -35,18 +37,34 @@ def run01():
     # 마우스이동
     pag.moveTo(x=100, y=100, duration=3.0)
 
+def run03():
+    """
+    >>> from PIL import Image
+    >>> img = Image.fromarray(np.ones((100, 100, 3), dtype=np.uint8))  # RGB image
+    >>> ImageOps.invert(img)
+    """
+    name_img = dir_home_images + 'banana.png'
+    img = Image.fromarray(skimage.io.imread(fname=name_img))  # RGB image
+    ImageOps.invert(img)
+    plt.imshow(img)
+    plt.show()
+
 
 def run02():
     print('*** Start to find! ***')
     name_img = dir_home_images + 'banana.png'
-    im_array = skimage.io.imread(fname=name_img)
-    print(im_array.shape)           # (173, 248, 3)
-    plt.imshow(im_array)
+    img_array = skimage.io.imread(fname=name_img)
+    print(img_array.shape)           # (173, 248, 3)
+    plt.imshow(img_array)
     plt.show()
 
     # 이미지 중앙좌표 찾기, confidence: 정확도
     # pos = pag.locateCenterOnScreen('banana.png', confidence=0.8)
-    pos = pag.locateCenterOnScreen(image=im_array)
+    img_PIL = Image.fromarray(img_array)  # RGB image
+    ImageOps.invert(img_PIL)
+
+    # pos = pag.locateCenterOnScreen(image=img_array) # no attribute 'mode'
+    pos = pag.locateCenterOnScreen(image=img_PIL)
     print(type(pos)); quit()
 
     print('중앙좌표:', pos)
@@ -67,4 +85,6 @@ def get_posXY():
 if __name__ == '__main__':
     # run01()
     run02()
+    # run03()
+
     # print(get_posXY())              # Point(x=3146, y=287)

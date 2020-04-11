@@ -3,7 +3,7 @@
 # config_stocks.py 에서 변수를 가져옴 (종목명/코드)
 """
 import random
-import skimage
+import skimage.io
 import matplotlib.pyplot as plt
 
 import assets.script_run

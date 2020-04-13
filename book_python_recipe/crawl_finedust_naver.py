@@ -28,7 +28,10 @@ import _assets.script_run
 print(__doc__)
 
 url_target = 'https://search.naver.com/search.naver?query=날씨'
+url_target = 'https://cafe.naver.com/joonggonara.cafe?iframe_url=/ArticleList.nhn?search.clubid=10050146&search.boardtype=L&viewType=pc'
+
 """
+URLSPLIT =
 # SplitResult( 5-tuples
 #         scheme='https',
 #         netloc='search.naver.com',
@@ -36,6 +39,8 @@ url_target = 'https://search.naver.com/search.naver?query=날씨'
 #         query='query=날씨',
 #         fragment='',
 #     )
+
+URLPARSE =
 # ParseResult( 6-tuples ... add 'params'
 #         scheme='https',
 #         netloc='search.naver.com',
@@ -45,6 +50,19 @@ url_target = 'https://search.naver.com/search.naver?query=날씨'
 #         fragment='',
 #     )
 """
+
+# # FOR TEST!
+# _ = urlsplit(url=url_target)
+# # _ = urlparse(url=url_target
+# _2 = urlsplit(url=_.query)
+# print("1 = ",_)
+# print("1q= ",_.query)
+# print()
+#
+# print("2 = ",_2)
+# print("2q= ",_2.query)
+# quit()
+
 param_dict = {
         'scheme'    : 'https',
         'netloc'    : 'search.naver.com',
@@ -54,8 +72,6 @@ param_dict = {
         'fragment'  : '',
     }
 
-# _ = urlsplit(url=url_target)
-# print(_); quit()
 
 url_base = "https://www.daum.net/q"
 url = url_base + "?" + urlencode(query=param_dict)
@@ -78,6 +94,7 @@ data2 = data1.findAll('dd')
 
 
 chemicals = [dat.find('span', {'class': 'num'}).text for dat in data2]
+
 echo_messages = [
     f" WEB CRAWLING : NAVER WEATHER",
     f"-------------------------------",

@@ -1,8 +1,7 @@
 """
-# stock_charts_view /pstaticNet - jupyter notebook conversion
+# stock_charts_view / pstaticNet - jupyter notebook conversion
 # config_stocks.py 에서 변수를 가져옴 (종목명/코드)
 """
-import random
 import skimage.io
 import matplotlib.pyplot as plt
 
@@ -20,7 +19,7 @@ set_font_hanguel_graph()
 header = get_today_header()             # 05Dec(Thu)AM0803_2017
 
 def main():
-    """ 6개 ~ 최대12개 챠트만 나열해서 봅니다. 그게 제일, 보기 적당해"""
+    """ 6개 ~ 최대12개 챠트만 나열해서 봅니다. 그게 제일, 보기 적당 해"""
     global index_partial
     # 확인할 종목명, 코드를 보여준다.
     show_dict()

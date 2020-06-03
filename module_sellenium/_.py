@@ -7,8 +7,8 @@
 # 대부분의 경우 requests 만으로도 javascript 가 하는일을 할수 있고
 # 속도고 빠르게, 리소스도 적게 먹는 웹 자동화를 requests 만으로 구현이 가능합니다.
 
-import requests
 import time
+import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
@@ -115,7 +115,10 @@ def mkhdr(hds):
 
 
 if __name__ == '__main__':
-    # main()
+    main()
+
+"""
+    # 결과 확인하기
     from assets import script_run
     from pyprnt import prnt
 
@@ -134,5 +137,4 @@ if __name__ == '__main__':
             ]
 
     prnt(globals())
-
-    pass
+"""

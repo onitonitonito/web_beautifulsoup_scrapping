@@ -3,6 +3,7 @@
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 *.ini
 *.log
+*.lnk
 
 _results/*.md
 _results/*.json
@@ -24,5 +25,4 @@ __pycache__/
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 _config_security.py
 
-module_sellenium/works/*.png
-module_sellenium/works/interests_7,8,18,17,9,11/*.png
+module_sellenium/works/interests_*/*.png

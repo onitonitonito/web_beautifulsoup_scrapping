@@ -39,7 +39,7 @@ def get_index_partial():
     answer = input(
                 "idx_array를 ','구분 4개 이상 입력 짝수로 입력 (예) 4,3,1,2\n" +
                 "or [ENTER]=기본 처음 4개 출력 [1,2,3,4]와 동일\n :    "
-            ).strip()
+                ).strip()
     if answer[0:1].isnumeric():
         print([int(idx)-1 for idx in answer.split(",")])
         return [int(idx)-1 for idx in answer.split(",")]
@@ -117,5 +117,12 @@ def save_or_show(index_partial, save_chart_only=False):
 
 # TODO 1: refactor variables, more effective
 if __name__ == '__main__':
-    main()
+    # main()
+
+    # # 코드값 표를 보여준다
+    # show_dict()
+
+    # 인덱스값을 얻어서, -1씩 계산해서 리턴 (프린터는 기본)
+    _ = get_index_partial()
+
     pass

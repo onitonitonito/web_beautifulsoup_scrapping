@@ -3,17 +3,14 @@
 """
 # apply: multi_pop_tabs / stock_weekly_chart.ipynb
 
-import sys
-import random
-from os.path import dirname
-
 print(__doc__)
 
-name_root = "web_beautifulsoup_scrapping"
+import os
+import random
+
 name_home = "module_sellenium"
 
-get_dir_by = (lambda x: "".join(dirname(__file__).partition(x)[:2])+"\\")
-dir_root = get_dir_by(name_root)
+get_dir_by = (lambda x: "".join(os.path.dirname(__file__).partition(x)[:2])+"\\")
 dir_home = get_dir_by(name_home)
 
 home_assets = dir_home + "assets\\"
@@ -116,7 +113,6 @@ def get_names_codes_partial(index_partial):
         codes_partial.append(codes[idx])
     return names_partial, codes_partial
 
-
 def pop_top_windown(browser, number):
     """첫번째 탭 : browser.get() """
     # top page = browser.get()
@@ -149,17 +145,6 @@ def pop_script_window(browser, numbers, end_by=True):
 
 
 if __name__ == '__main__':
-    # # for TEST ... dir_root 변수만 필요 함 (가공하기 위한 과정)
-    # print(dir_root)
-    # print(home_assets)
-    # print(home_statics)
-    # print(home_works)
-
-    # show_dict()
-    # for n in range(1000):
-    #     print(get_sidecode(79, mode=1))
-
     (names_partial, codes_partial) = get_names_codes_partial([1,2,3])
     show_names_codes(names_partial, codes_partial)
-
     pass

@@ -1,12 +1,22 @@
-#____________________________________
-# self generated result, log
-#^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#___________+_______________+__________@
+#           |               |
+#  +~~~~~~~~|~~~~~~~~~~~~~~~|~~~~~~~~~~+
+#  |   self generated result, log, txt |
+#  +...................................+
+#  |                                   |
+#  |   ---- *.ini - SECURITY ALART!    |
+#  |                                   |
+#  +^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^+
+#
+
 *.ini
+
+#_______________________________________
+
+.ipynb_checkpoints
+__pycache__/
 *.log
 *.lnk
-
-_results/*.md
-_results/*.json
 
 test/
 html/
@@ -15,14 +25,16 @@ trash/
 #____________________________________
 # Temporary Files
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-__pycache__/
-.ipynb_checkpoints
 *.xls
 *.xlsx
+
+_results/*.md
+_results/*.json
 
 #____________________________________
 # should be hidden
 #^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 _config_security.py
 
+module_sellenium/works/*.png
 module_sellenium/works/interests_*/*.png

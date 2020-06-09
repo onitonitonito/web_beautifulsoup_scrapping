@@ -12,10 +12,10 @@ name_home = "module_sellenium"
 
 get_dir_by = (lambda x: "".join(os.path.dirname(__file__).partition(x)[:2])+"\\")
 dir_home = get_dir_by(name_home)
+dir_works = dir_home + "works\\"
 
-home_assets = dir_home + "assets\\"
-home_statics = dir_home + "statics\\"
-home_works = dir_home + "works\\"
+# 조화할수 있는 targets를 정의한다. 총 7가지
+targets = ['day','week','month3','year','year3','year5','year10']
 
 code_stock = {
     '제닉': '123330',
@@ -50,9 +50,6 @@ code_stock = {
     'NCSOFT': '036570',
     '안랩': '053800',
 }
-
-# 조화할수 있는 targets를 정의한다. 총 7가지
-targets = ['day','week','month3','year','year3','year5','year10']
 
 # 딕셔너리내용을 names 와 codes 어레이로 바꾼다 ... index 일체화
 names = [name for name in code_stock.keys()]
